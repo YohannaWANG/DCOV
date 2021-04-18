@@ -1,17 +1,9 @@
-"Author: Yuhao Wang
+"Author: 
  Date:   2021-01-28
  Description: 
           - Utils for chain graph struture analysis;
           - And chain graph structure learning baseline algorithms.
           - Implementation for 'Identifiability of chain graph with equal determinant' " 
-
-#library("ggm",lib.loc="F:/Tools/Anaconda3/envs/Bayesian/Lib/R/library")
-#library("pcalg",lib.loc="C:/Program Files/R/R-4.0.3/library")
-#library("lcd",lib.loc="C:/Program Files/R/R-4.0.3/library")
-#Sys.getenv("C:/Program Files/R/R-4.0.3/library")
-#Sys.which("stats.dll")
-#library("ggm", lib.loc = '/home/yohanna/R/x86_64-pc-linux-gnu-library/4.0')
-
 
 library(ggm)
 library(lcd)
@@ -26,25 +18,160 @@ source("AMPCGs2019.R")
 NOTES: comp.cg() function will return the metrics of [TP, FN, FP, TN, TPR, FPR, SHD]
 "
 
+test_exp <- function(){ 
+  "Load data and graph"
+  dag <- matrix(c( 0, 1, 1, 0, 0, 0,
+                    0, 0, 0, 1, 0, 0,
+                    0, 0, 0, 0, 1, 0,
+                    0, 0, 0, 0, 1, 0,
+                    0, 0, 0, 0, 0, 1,
+                    0, 0, 0, 0, 0, 0),
+                 6, 6, byrow = TRUE)
+  
+  N <- c("a","b","c","d","e","f")
+  dimnames(dag) <- list(N, N) 
+  cg.data<-read.csv("DAG.csv")
+  draw(dag)
+  #check whether "dag" is a chain graph 
+  is.chaingraph(dag)
+}
 
-"Load data and graph"
-dag <- matrix(c( 0, 1, 1, 0, 0, 0,
-                  0, 0, 0, 1, 0, 0,
-                  0, 0, 0, 0, 1, 0,
-                  0, 0, 0, 0, 1, 0,
-                  0, 0, 0, 0, 0, 1,
-                  0, 0, 0, 0, 0, 0),
-               6, 6, byrow = TRUE)
+"Copyright: NPVAR algorithm - generate simulation data"
+"Link: https://github.com/MingGao97/NPVAR"
+### Simulated data generation
+### Given graph type, source variance, number of nodes, sample size, graph degree, x2
+### Return a list consists of data matrix and true graph adjacency matrix
+data_simu <- function(graph_type, errvar, d, n, s0, x2 = F){
+  if (graph_type == 'MC-SIN') {
+    G = markov_chain(d)
+    X = sampleFromSin(G, n, errvar)
+    if (x2) X2 = sampleFromSin(G, n, errvar)
+  } else if (graph_type == 'MC-GP') {
+    G = markov_chain(d)
+    if (x2) {
+      X = sampleDataFromG(2 * n, G, errvar = errvar)
+      X2 = X[(n+1):(2*n),]
+      X = X[1:n,]
+    } else {
+      X = sampleDataFromG(n, G, errvar = errvar)
+    }
+  } else if (graph_type == 'ER-AGP') {
+    if ((d==5) & (s0>1)) {
+      G = as.matrix(sparsebnUtils::random.graph(d, 9))
+    } else {
+      G = as.matrix(sparsebnUtils::random.graph(d, s0*d))
+    }
+    if (x2) {
+      X = sampleDataFromG(2 * n, G, errvar = errvar)
+      X2 = X[(n+1):(2*n),]
+      X = X[1:n,]
+    } else {
+      X = sampleDataFromG(n, G, errvar = errvar)
+    }
+  } else if (graph_type == 'ER-SIN') {
+    if ((d==5) & (s0>1)) {
+      G = as.matrix(sparsebnUtils::random.graph(d, 9))
+    } else {
+      G = as.matrix(sparsebnUtils::random.graph(d, s0*d))
+    }
+    X = sampleFromSin(G, n, errvar)
+    if (x2) X2 = sampleFromSin(G, n, errvar)
+  } else if (graph_type == 'ER-NGP') {
+    if ((d==5) & (s0>1)) {
+      G = as.matrix(sparsebnUtils::random.graph(d, 9))
+    } else {
+      G = as.matrix(sparsebnUtils::random.graph(d, s0*d))
+    }
+    if (x2) {
+      X = sampleDataFromG(2*n, G, errvar = errvar, parsFuncType=list(B=randomB(G),kap=0.01,sigmax=1,sigmay=1,output=FALSE))    
+      X2 = X[(n+1):(2*n),]
+      X = X[1:n,]
+    } else {
+      X = sampleDataFromG(n, G, errvar = errvar, parsFuncType=list(B=randomB(G),kap=0.01,sigmax=1,sigmay=1,output=FALSE))    
+    }
+  } else if (graph_type == 'SF-AGP') {
+    G = as_adjacency_matrix(sample_pa(d, m = s0),sparse = F)
+    if (x2) {
+      X = sampleDataFromG(2 * n, G, errvar = errvar)
+      X2 = X[(n+1):(2*n),]
+      X = X[1:n,]
+    } else {
+      X = sampleDataFromG(n, G, errvar = errvar)
+    }
+  } else if (graph_type == 'SF-SIN') {
+    G = as_adjacency_matrix(sample_pa(d, m = s0),sparse = F)
+    X = sampleFromSin(G, n, errvar)
+    if (x2) X2 = sampleFromSin(G, n, errvar)
+  } else if (graph_type == 'SF-NGP') {
+    G = as_adjacency_matrix(sample_pa(d, m = s0),sparse = F)
+    if (x2) {
+      X = sampleDataFromG(2*n, G, errvar = errvar, parsFuncType=list(B=randomB(G),kap=0.01,sigmax=1,sigmay=1,output=FALSE))    
+      X2 = X[(n+1):(2*n),]
+      X = X[1:n,]
+    } else {
+      X = sampleDataFromG(n, G, errvar = errvar, parsFuncType=list(B=randomB(G),kap=0.01,sigmax=1,sigmay=1,output=FALSE))    
+    }
+  }
+  if (x2) {
+    return(list(X=X, G=G, X2=X2))
+  } else {
+    return(list(X=X, G=G))
+  }
+}
 
-N <- c("a","b","c","d","e","f")
-dimnames(dag) <- list(N, N) 
-# Load "DAG.csv" file. 3000 random samples of the DAG above
-cg.data<-read.csv("DAG.csv")
-#plot "dag" from the R package lcd
-draw(dag)
-#check whether "dag" is a chain graph 
-is.chaingraph(dag)
+### Sample from SIN model given adjacency matrix, sample size, source variance
+sampleFromSin = function(G, n, errvar = 0.5){
+  p = dim(G)[2]
+  X = matrix(NA,n,p)
+  causOrder = computeCausOrder(G)
+  for (node in causOrder) {
+    paOfNode = which(G[,node] == 1)
+    if(length(paOfNode) == 0){
+      X[,node] = rnorm(n, 0, sqrt(errvar))
+    }else if(length(paOfNode) == 1){
+      X[,node] = sin(X[,paOfNode]) + rnorm(n, 0, sqrt(errvar))
+    }else{
+      X[,node] = apply(sin(X[,paOfNode]), 1, sum) + rnorm(n, 0, sqrt(errvar))
+    }
+  }
+  return(X)
+}
 
+computeCausOrder <- function(G)
+  # Copyright (c) 2013  Jonas Peters  [peters@stat.math.ethz.ch]
+  # All rights reserved.  See the file COPYING for license terms.
+{
+  p <- dim(G)[2]
+  remaining <- 1:p
+  causOrder <- rep(NA,p)
+  for(i in 1:(p-1))
+  {
+    root <- min(which(colSums(G) == 0))
+    causOrder[i] <- remaining[root]
+    remaining <- remaining[-root]
+    G <- G[-root,-root]
+  }
+  causOrder[p] <- remaining[1]
+  return(causOrder)
+}
+
+
+npvar_dag_data <- function(d, n){
+  "Generate DAG data based on NPVAR algorithm"
+  library("np")
+  library("mgcv")
+  #source('NPVAR.R')
+  #source('utils.R')
+  "Generate simulation data"
+  data = data_simu(graph_type = 'ER-SIN', errvar = 0.5, d, n, s0 = 1, x2 = T)
+  "Extract synthetic data and graph from above"
+  X <- data$X
+  G <- data$G
+  X2 <- data$X2
+  ### Naively recover ordering node one by one
+  result1 <- NPVAR(X)
+  return(list(X, G, result1))
+}
 
 "
 Function: Return chain components
@@ -55,26 +182,6 @@ chain_comp <- function(cg.data, dag){
   return(is.chaingraph(dag))
 }
 
-calculate_mgcv3 <- function(){
-  library("mgcv")
-  x <- read.csv("DAG.csv")
-  ancestors <- unlist(lapply(1, as.numeric))
-  current_node <- unlist(lapply(2, as.numeric))
-  if(!is.data.frame(x)){
-    x = data.frame(x)
-  }
-  mgcvformula = "x[,current_node] ~ "
-  for(a in ancestors){
-    mgcvformula = paste0(mgcvformula, "s(x[,", a, "], bs='ps', sp=0.6) + ")
-  }
-  mgcvformula = substr(mgcvformula, start = 1, stop = nchar(mgcvformula) - 3)
-  mgcvformula = as.formula(mgcvformula)
-  
-  b1 = mgcv::gam(mgcvformula, data = x)
-  fit.gam = predict(b1)
-  
-  return(fit.gam)
-}
 
 calculate_np <- function(x, ancestors, current_node){
   library("mgcv")
@@ -105,63 +212,78 @@ calculate_np <- function(x, ancestors, current_node){
 }
 
 
-calculate_mgcv2 <- function(){ 
-  #source('NPVAR.R')
-  #source('utils_NPVAR.R')
+"MGCV algorithm:
+ Notes: already finished debug"
+calculate_mgcv <- function(x, ancestors, current_node){ 
   library("mgcv")
-  x <- read.csv("DAG.csv")
-  ancestors <- unlist(lapply(1, as.numeric))
-  current_node <- unlist(lapply(2, as.numeric))
-  #ancestors <- lapply(ancestors, as.integer)
-  #ancestors <- as.numeric(unlist(ancestors)) + 1
-  #current_node <- lapply((current_node + 1), as.integer)
-  #current_node  <- as.numeric(unlist(current_node))
-
+  #x <- read.csv("DAG.csv")
+  ancestors <- unlist(lapply(ancestors, as.numeric)) + 1
+  currentNode <- unlist(lapply(current_node, as.numeric)) + 1
   ### Compute nonparametric regression using GAM / mgcv package
   if(!is.data.frame(x)){
     x = data.frame(x)
   }
-  #colnames(x) <- c(letters[1: ncol(x)])
-
-  mgcvformula = "x[,current_node] ~ "
+  
+  mgcvformula = "x[,currentNode] ~ "
   for(a in ancestors){
-    mgcvformula = paste0(mgcvformula, "s(x[,", a, "], bs='ps', sp=0.6) + ")
+    as.numeric(unlist(a))
+    mgcvformula = paste0(mgcvformula, "s(x[,", a, "], bs='ps') + ")
   }
   mgcvformula = substr(mgcvformula, start = 1, stop = nchar(mgcvformula) - 3)
-  mgcvformula = as.formula(mgcvformula)
-
-  b1 = mgcv::gam(mgcvformula, data = x)
-
-  fit.gam = predict(b1)
   
+  mgcvformula = as.formula(mgcvformula)
+  b1 = mgcv::gam(mgcvformula, data = x,  sp=0.6)
+  fit.gam = predict(b1)
   return(fit.gam)
 }
 
-calculate_mgcv <- function(x, ancestors){ 
-  ### Compute nonparametric regression using GAM / mgcv package
+
+"
+Function: Prune convert topological order into adjacency matrix
+"
+### Test if there is violation of estimated ordering under the true adjacency matrix
+### Return whether ordering is correct and count of violations
+test_order <- function(topo_order, adj){
+  edges = which(adj == 1, arr.ind = T)
+  order_Index = order(topo_order)
+  count = 0
+  for (i in 1:nrow(edges)) {
+    if (order_Index[edges[i,1]] > order_Index[edges[i,2]]) {
+      count = count + 1
+    }
+  }
+  return(list(right = as.numeric(count==0), count = count))
+}
+
+### Estimate adjacency matrix using estimated ordering and significance given by GAM
+prune <- function(x, est_order, cutoff = 0.001){
+  library("mgcv")
   if(!is.data.frame(x)){
     x = data.frame(x)
   }
-  print(class(ancestors))
+  p = dim(x)[2]
+  adj = matrix(0, p, p)
+  est_order <- unlist(lapply(est_order, as.numeric)) + 1
+  
+  for (i in 2:p) {
+    node = est_order[i] 
+    ancestors = est_order[1:(i-1)]
 
-  n = nrow(x)
-  p = ncol(x)
-  node.index = 1:p
-  names(node.index) = names(x)
-  
-  mgcvformula = "x[,current_node] ~ "
-  for(a in ancestors){
-    mgcvformula = paste0(mgcvformula, "s(x[,", a, "], bs='ps', sp=0.6) + ")
+    mgcvformula = "x[,node] ~ "
+    for(a in ancestors){
+      mgcvformula = paste0(mgcvformula, "s(x[,", a, "], bs='ps') + ")
+    }
+    mgcvformula = substr(mgcvformula, start = 1, stop = nchar(mgcvformula) - 3)
+    mgcvformula = as.formula(mgcvformula)
+    print(mgcvformula)
+    mod = mgcv::gam(mgcvformula, data=x, sp=0.6)
+
+    parents = ancestors[summary(mod)$s.pv < cutoff]
+    adj[parents, node] = 1
   }
-  mgcvformula = substr(mgcvformula, start = 1, stop = nchar(mgcvformula) - 3)
-  mgcvformula = as.formula(mgcvformula)
-  
-  b1 = mgcv::gam(mgcvformula, data = x)
-  fit.gam = predict(b1)
-  
-  condvar.gam = var(x[,current_node]) - var(fit.gam)
-  return(condvar.gam)
+  return(adj)
 }
+
 
 "NOTES: Algorithms 1-3 are for chain graph structure learning"
 "Algoithm implementation code is mainly from the paper:
@@ -176,7 +298,6 @@ baseline_lcdlike <- function(cg.data, dag){
   require("lcd")
   source("AMPCGs2019.R")
   # Learn the chain graph structure via the LCD-like algorithm
-  #colnames(cg.data) <- c("a","b","c","d","e","f")
   colnames(cg.data) <- c(letters[1: ncol(cg.data)])
   row.names(cg.data) <- 1 : nrow(cg.data) 
   colnames(dag) <- c(letters[1: ncol(dag)])
@@ -184,8 +305,8 @@ baseline_lcdlike <- function(cg.data, dag){
   ampcg <- learn.original.amp.normLCD(cg.data, p.value=0.05)
   ampcg <- ampcg[nrow(ampcg):1, ncol(ampcg):1]
   #compare the learned CG to the true CG 
-  results <- comp.cgs(dag,ampcg) 
-  return(results)
+  #results <- comp.cgs(dag,ampcg) 
+  return(ampcg)
 }
 "Baseline algorithm 1: LCD-like algorithm"
 baseline_lcdlike2 <- function(cg.data, dag){
@@ -272,9 +393,6 @@ baseline_ges <- function(cg.data, dag){
   amat<-wgtMatrix(ges.fit$essgraph) #essgraph (cpdag), repr (An object of a class from ParDAG)
   amat[amat != 0] <- 1
   # Reformat row and column name of amat (To enable com.cgs function)
-  #rownames(amat) <- c("a","b","c","d","e","f")
-  #colnames(amat) <- c("a","b","c","d","e","f")
-  # Compare the learned AMAT to the true LDCG(dag)
   return(amat)
 }
 
@@ -288,7 +406,6 @@ baseline_pc <- function(cg.data, dag){
   for (method in methods){ 
     Ahat <- getParents(cg.data, environment=NULL, intervention=NULL, method=method, alpha=0.01, pointConf = TRUE)
   }
-  # Reformat row and column name of amat (To enable com.cgs function)
   return(Ahat)
 }
 
@@ -325,5 +442,6 @@ baseline_arges <- function(cg.data, dag){
   return(amat)  
   
 }
+
 
 

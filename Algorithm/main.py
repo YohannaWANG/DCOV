@@ -43,7 +43,7 @@ utils = rpackages.importr('utils')
 
 importr('mgcv')
 importr('pcalg')
-importr('lcd')
+#importr('lcd')
 robjects.r.source("utils.R")
 
 

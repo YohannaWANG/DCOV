@@ -6,9 +6,9 @@
           - Implementation for 'Identifiability of chain graph with equal determinant' " 
 
 library(ggm)
-library(lcd)
+# library(lcd)
 library(pcalg)
-source("AMPCGs2019.R")
+# source("AMPCGs2019.R")
 
 "TODO:  
 1. Use python code generate chain graph adjacency matrix **Adj** and
@@ -284,97 +284,7 @@ prune <- function(x, est_order, cutoff = 0.001){
   return(adj)
 }
 
-
-"NOTES: Algorithms 1-3 are for chain graph structure learning"
-"Algoithm implementation code is mainly from the paper:
-         2020 - AMP Chain Graphs: Minimal Separators and Structure Learning Algorithms "
-"Link: https://github.com/majavid/AMPCGs2019"
-
-
-"Baseline algorithm 1: LCD-like algorithm"
-baseline_lcdlike <- function(cg.data, dag){
-  require("ggm")
-  require("pcalg")
-  require("lcd")
-  source("AMPCGs2019.R")
-  # Learn the chain graph structure via the LCD-like algorithm
-  colnames(cg.data) <- c(letters[1: ncol(cg.data)])
-  row.names(cg.data) <- 1 : nrow(cg.data) 
-  colnames(dag) <- c(letters[1: ncol(dag)])
-  row.names(dag) <- c(letters[1: ncol(dag)])
-  ampcg <- learn.original.amp.normLCD(cg.data, p.value=0.05)
-  ampcg <- ampcg[nrow(ampcg):1, ncol(ampcg):1]
-  #compare the learned CG to the true CG 
-  #results <- comp.cgs(dag,ampcg) 
-  return(ampcg)
-}
-"Baseline algorithm 1: LCD-like algorithm"
-baseline_lcdlike2 <- function(cg.data, dag){
-  require("ggm")
-  require("pcalg")
-  require("lcd")
-  source("AMPCGs2019.R")
-  # Learn the chain graph structure via the LCD-like algorithm
-  colnames(cg.data) <- c(letters[1: ncol(cg.data)])
-  row.names(cg.data) <- 1 : nrow(cg.data) 
-  colnames(dag) <- c(letters[1: ncol(dag)])
-  row.names(dag) <- c(letters[1: ncol(dag)])
-  ampcg <- learn.original.amp.normLCD(cg.data, p.value=0.05)
-  #ampcg <- ampcg[nrow(ampcg):1, ncol(ampcg):1]
-  #compare the learned CG to the true CG 
-  results <- comp.cgs(dag,ampcg) 
-  return(ampcg)
-}
-
-
-
-"Baseline algorithm 2: LDCG algorithm"
-baseline_ldcg <- function(cg.data, dag){
-  require("ggm")
-  require("pcalg")
-  require("lcd")
-  source("AMPCGs2019.R")
-  # Learn the chain graph structure via the LCD-like algorithm
-  colnames(cg.data) <- c(letters[1: ncol(cg.data)])
-  row.names(cg.data) <- 1 : nrow(cg.data) 
-  
-  ampcg<-learn.original.amp.normLCD(cg.data,p.value=0.05)
-  ampcg<-ampcg[nrow(ampcg):1, ncol(ampcg):1]
-  #Learn the largest deflagged graph (LDCG) 
-  ldcg<-Largest_DeflaggedAMPCG(ampcg)
-  # plot the learned LDCG
-  #draw(ldcg)
-  # compare the learned LDCG to the true LDCG (dag)
-  #results <- comp.cgs(dag,ldcg)  
-  return(ldcg)
-}
-
-baseline_pclike <-function(cg.data, dag){
-  source("AMPCGs2019.R")
-  colnames(cg.data) <- c(letters[1: ncol(cg.data)])
-  row.names(cg.data) <- 1 : nrow(cg.data) 
-  ampcg<-learn.amp.normPC(cg.data, p.value = 0.05, method="stable")
-  return(ampcg)
-}
-
-
-" Baseline algorithm 2: LCD algorithm"
-baseline_lcd <- function(cg.data, dag){
-  require("lcd")
-  colnames(cg.data) <- c(letters[1: ncol(cg.data)])
-  row.names(cg.data) <- 1 : nrow(cg.data) 
-  n <- nrow(cg.data)
-  p.value <- .05
-  tgug <- naive.getug.norm(cg.data, p.value)
-  tg.jtree <- ug.to.jtree(tgug)
-  tg.pat <- learn.mec.norm(tg.jtree, cov(cg.data), n, p.value, "CG")
-  #df4 <- tg.pat[order(nrow(tg.pat):1) ,order(ncol(tg.pat):1)]
-  #comp.skel(skeleton(toy.graph), skeleton(df4))
-  #comp.pat(pattern(toy.graph), tg.pat)
-  return(tg.pat)
-}
-
-
+ 
 "Notes: Algorthms below are DAG structure learning algorithms"
 
 "2020-A polynomial-time algorithm for learning nonparametric causal graphs-NeurIPS 2020"

@@ -1,9 +1,17 @@
-function [A] = our_experiment(Sigma)
+function Abest = our_experiment(Sigma)
 %OUR_EXPERIMENT Summary of this function goes here
 %   Detailed explanation goes here
 V = 1:size(Sigma, 1);
-F = sfo_fn_logdet(Sigma, V);
+Abest = [];
+bestval=0;
 
-A = sfo_min_norm_point(F, V)
+for i = V
+    Vi = V(V~=i);
+    F = sfo_fn_logdet(Sigma, Vi, i);
+    A = sfo_min_norm_point(F, Vi);
+    if (i==1) || (F(A) < bestval)
+        Abest = [A, i];
+        bestval = F(A);
+    end
 end
 

@@ -5,11 +5,11 @@
 function [F,H] = init(F,sset)
 sset = sfo_unique_fast(sset);
 if ~isequal(sset,get(F,'current_set'))
-    F.cholA = chol(F.sigma(sset,sset)+(1e-10)*eye(length(sset)));
+    F.cholA = chol(F.sigma([sset, F.exception], [sset, F.exception])+(1e-10)*eye(length(sset)+1));
     F.indsA = sset;
     
     if isempty(sset)
-        H = 0;
+        H = log2(F.sigma(F.exception, F.exception));
     else
         H = sum(log2(diag(F.cholA)));
     end

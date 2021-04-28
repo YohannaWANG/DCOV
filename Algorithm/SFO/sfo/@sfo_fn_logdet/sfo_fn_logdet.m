@@ -7,9 +7,10 @@
 %
 % Example: F = sfo_fn_logdet(0.5*eye(3)+0.5*ones(3),1:3);
 
-function F = sfo_fn_logdet(sigma,V)
+function F = sfo_fn_logdet(sigma,V, i)
 F.sigma = sigma;
 F.V = V;
+F.exception = i;
 
 F.indsA = [];
 F.cholA = [];

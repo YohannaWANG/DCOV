@@ -10,12 +10,10 @@ if sum(A==el)>0
     newScore = get(F,'current_val');
     return;
 end
-        
-if (isempty(A))
-    sigmaXgA = F.sigma(el,el);
-else
-    sigmaXgA = F.sigma(el,el)-F.sigma(el,A)*(F.cholA\(F.cholA'\F.sigma(A,el)));
-end
+
+B=[A, F.exception];
+
+sigmaXgA = F.sigma(el,el)-F.sigma(el,B)*(F.cholA\(F.cholA'\F.sigma(B,el)));
 
 H = sum(log2(sigmaXgA));
 

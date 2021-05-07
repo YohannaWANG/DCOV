@@ -9,7 +9,7 @@ if ~isequal(sset,get(F,'current_set'))
     F.indsA = sset;
     
     if isempty(sset)
-        H = log2(F.sigma(F.exception, F.exception));
+        H = 1/2 * log2(F.sigma(F.exception, F.exception));
     else
         H = sum(log2(diag(F.cholA)));
     end

@@ -3,6 +3,7 @@ function Abest = our_experiment(Sigma)
 %   Detailed explanation goes here
 V = 1:size(Sigma, 1);
 Abest = [];
+ibest = 0;
 bestval=0;
 
 for i = V
@@ -10,8 +11,11 @@ for i = V
     F = sfo_fn_logdet(Sigma, Vi, i);
     A = sfo_min_norm_point(F, Vi);
     if (i==1) || (F(A) < bestval)
-        Abest = [A, i];
+        Abest = A;
+        ibest = i;
         bestval = F(A);
     end
 end
+
+Abest = [Abest, ibest];
 

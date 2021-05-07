@@ -1,4 +1,4 @@
-% Implementation by Arnab Bhattacharyya (arnabb@nus.edu.sg), based on tutorial script by Andreas Krause (krausea@gmail.com)
+% Implementation by Arnab Bhattacharyya (arnabb@nus.edu.sg), based on tutor)ial script by Andreas Krause (krausea@gmail.com)
 % 
 % Example: See sfo_fn.m and the tutorial script for more information
 
@@ -13,8 +13,9 @@ end
 
 B=[A, F.exception];
 
-sigmaXgA = F.sigma(el,el)-F.sigma(el,B)*(F.cholA\(F.cholA'\F.sigma(B,el)));
+sigmaXgA = (F.sigma(el,el)-F.sigma(el,B)*(F.cholA\(F.cholA'\F.sigma(B,el))))/2;
 
 H = sum(log2(sigmaXgA));
 
 newScore = get(F,'current_val')+H;
+disp([])

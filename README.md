@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/dcov_logo.png" />
+  <img src="docs/images/dcov_logo.png"  alt="width="400" height="400">
 </p>
 Determinant of COVariance
 # Identifiability_chain_graph

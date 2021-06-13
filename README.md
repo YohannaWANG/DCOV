@@ -1,6 +1,9 @@
+
+<img align="left" src="docs/images/dcov.pn">
+
 <p align="left">
    <h1> 
-   <img src="docs/images/dcov_logo.png"  alt="width="200" height="200">   
+   <img src="docs/images/dcov.png"  alt="width="200" height="200">   
    <strong>   Determinant of COVariance</strong> </h1> 
 </p>
 

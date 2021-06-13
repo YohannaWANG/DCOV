@@ -6,7 +6,7 @@
 # Identifiability of AMP Chain Graph Models
 
 ## Background
-Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications
+Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications.
 
 ### Chain graph models
 
@@ -18,7 +18,7 @@ Chain graph models contain both <u>directed and undirected edges</u> and can be 
 
 ### Identifiability
 
-The **partitioning** of chain components and the **topological order** on the chain components can be **uniquely identified**.
+The **partitioning** of chain components and the **topological order** on the chain components are **uniquely** specified.
 <p align="center">
 <img width="500" alt="characterization" src="/docs/images/Identifiability.png"/>         
 </p>

@@ -1,12 +1,6 @@
 
 <img align="left" src="docs/images/dcov.png">
 
-<p align="left">
-   <h1> 
-   <img src="docs/images/dcov.png"  alt="width="200" height="200">   
-   <strong>   Determinant of COVariance</strong> </h1> 
-</p>
-
                                                                
 # Identifiability_chain_graph
 Identifiability of AMP chain graph                                       

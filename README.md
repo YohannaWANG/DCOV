@@ -89,11 +89,11 @@ $ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_n
    
 ## Performance
 
-100 nodes, degree 5, ER graph     | Effect of changing batch size, 100 nodes, Random Tree graph
+
+
+Algorithm 1 (Known chain components)         | Algorithm 2 (Unknown chain components)
 :--------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:
-<img width="400" alt="characterization" src="/docs/images/100_node_syn_uv_d5_ER.png" >  |  <img width="400" alt="characterization" src="/docs/images/Batch_LS_100node_randomTree.png" >
-
-
+<img width="400" alt="characterization" src="/docs/images/NPCOV_SHD.png" >  |  <img width="400" alt="characterization" src="/docs/images/NPCPV_SHD_algo2.png" >
 
 ## Citation
 

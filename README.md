@@ -26,26 +26,23 @@ For a known chain component decomposition, we show that the DAG on the chain com
 
                                                             
 ## Prerequisites
-- Python 3.6+
-- `networkx`
-- `argpase`
-- `numpy`
-- `scipy`
-- `matplotlib`
-- `torch`: Optional, only used for nonlinear model.
 
-- R 4.0.0
-- `rpy2`: Python interface, enables calling R from Python. Install [rpy2](https://pypi.org/project/rpy2/) first.
-- `pcalg` : [Methods for Graphical Models and Causal Inference](https://cran.r-project.org/web/packages/pcalg/index.html)
-- `mgvc` : [Mixed GAM Computation Vehicle with Automatic Smoothness Estimation](https://cran.r-project.org/web/packages/mgcv/index.html)
-- `ggm` : [Graphical Markov Models with Mixed Graphs](https://cran.r-project.org/web/packages/ggm/index.html)
-- `lcd` :[Learn Chain graphs via Decomposition](http://www2.uaem.mx/r-mirror/web/packages/lcd/index.html)
-Notes: [lcd](http://www2.uaem.mx/r-mirror/web/packages/lcd/index.html) is a relatively old package and can be installed from [here](http://www2.uaem.mx/r-mirror/src/contrib/lcd_0.7-3.tar.gz).
-  
-
-- Matlab R2020b
-- `Python-Matlab` : Calling Matlab from Python. Install [Python-Matlab](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html) first.
-- `SFO` : A Matlab toolbox for Submodular Function Optimization [SFO(v 2.0)](https://www.mathworks.com/matlabcentral/fileexchange/20504-submodular-function-optimization).
+- **Python 3.6+**
+  - `networkx`
+  - `argpase`
+  - `numpy`
+  - `scipy`
+  - `matplotlib`
+  - `torch`: Optional, only used for nonlinear model.
+- **R 4.0.0**
+  - `rpy2`: Python interface, enables calling R from Python. Install [rpy2](https://pypi.org/project/rpy2/) first.
+  - `pcalg` : [Methods for Graphical Models and Causal Inference](https://cran.r-project.org/web/packages/pcalg/index.html)
+  - `mgvc` : [Mixed GAM Computation Vehicle with Automatic Smoothness Estimation](https://cran.r-project.org/web/packages/mgcv/index.html)
+  - `ggm` : [Graphical Markov Models with Mixed Graphs](https://cran.r-project.org/web/packages/ggm/index.html)
+  - `lcd` :[Learn Chain graphs via Decomposition](http://www2.uaem.mx/r-mirror/web/packages/lcd/index.html) Notes: [lcd](http://www2.uaem.mx/r-mirror/web/packages/lcd/index.html) is a relatively old package and can be installed from [here](http://www2.uaem.mx/r-mirror/src/contrib/lcd_0.7-3.tar.gz).
+- **Matlab R2020b**
+  - `Python-Matlab` : Calling Matlab from Python. Install [Python-Matlab](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html) first.
+  - `SFO` : A Matlab toolbox for Submodular Function Optimization [SFO(v 2.0)](https://www.mathworks.com/matlabcentral/fileexchange/20504-submodular-function-optimization).
 
 
 ## Contents

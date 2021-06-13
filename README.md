@@ -9,11 +9,11 @@
 Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications
 
 ### Chain graph models
-<img width="460" alt="characterization" src="/docs/images/chain_graph.png"/>         
+<img width="" alt="characterization" src="/docs/images/chain_graph.png"/>         
 
 ### Identifiability
 
-<img width="460" alt="characterization" src="/docs/images/Identifiability.png"/>         
+<img width="" alt="characterization" src="/docs/images/Identifiability.png"/>         
 
 ### Video explanation 
 - About chain graph models.

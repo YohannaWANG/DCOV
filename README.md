@@ -59,8 +59,21 @@ Notes: [lcd](http://www2.uaem.mx/r-mirror/web/packages/lcd/index.html) is a rela
 
 ## Running a simple demo
 
+The simplest way to try out DCOV is to run a simple example:
+```bash
+$ git clone https://github.com/YohannaWANG/DCOV.git
+$ cd DCOV/
+$ python DCOV/demo.py
+```
 
 ## Runing as a command
+
+Alternatively, if you have a CSV data file `X.csv`, you can install the package and run the algorithm as a command:
+```bash
+$ pip install git+git://github.com/YohannaWANG/DCOV
+$ cd DCOV
+$ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_npcov --regress_method mgcv --n 50 --s 1000 --d 4 --operator det
+```
 
 ## Performance
 

@@ -1,13 +1,7 @@
- <style>
-img {
-  max-width: 100%;
-  height: auto;
-}
-</style>
 
 <p align="center">
   <img src="docs/images/dcov_logo.png"  alt="width="200" height="200">
-  <h1>Determinant of COVariance</h1>    
+  <br>Determinant of COVariance.    
 </p>
                                                                
 # Identifiability_chain_graph

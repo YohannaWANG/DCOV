@@ -1,3 +1,5 @@
+![](docs/images/dcov_logo.png)
+
 # Identifiability_chain_graph
 Identifiability of AMP chain graph
 

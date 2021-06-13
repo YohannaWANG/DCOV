@@ -14,9 +14,6 @@ Chain graph models contain both <u>directed and undirected edges</u> and can be 
 - Edges between nodes in chain are undirected;
 - Edges between nodes in different chains are directed. 
 
-![image](https://user-images.githubusercontent.com/31543559/121804565-8803ed80-cc79-11eb-9f73-c6be456c249b.png)
-
-
 <img width="" alt="characterization" src="/docs/images/chain_graph.png"/>         
 
 ### Identifiability

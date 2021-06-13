@@ -1,5 +1,5 @@
 
-<img align="left" src="docs/images/dcov.pn">
+<img align="left" src="docs/images/dcov.png">
 
 <p align="left">
    <h1> 

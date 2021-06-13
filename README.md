@@ -75,7 +75,15 @@ $ cd DCOV
 $ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_npcov --regress_method mgcv --n 50 --s 1000 --d 4 --operator det
 ```
 
+## Algorithms
+
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)  **Algorithm 1** AMP Chain graph identification with known chain components.
+   <img width="800" align ="center" alt="characterization" src="/docs/images/algo1.png" >
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  **Algorithm 2**  AMP Chain graph identification from unknown chain components. 
+   <img width="800" align ="center" alt="characterization" src="/docs/images/algo2.png">    
+   
 ## Performance
+
 
 ## Citation
 

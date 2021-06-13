@@ -10,10 +10,18 @@ Chain graph models contain both <u>directed and undirected edges</u> and can be 
 
 ### Chain graph models
 
+- Nodes can be disjointly partitioned  into several chain components;
+- Edges between nodes in chain are undirected;
+- Edges between nodes in different chains are directed. 
+
+![image](https://user-images.githubusercontent.com/31543559/121804565-8803ed80-cc79-11eb-9f73-c6be456c249b.png)
+
+
 <img width="" alt="characterization" src="/docs/images/chain_graph.png"/>         
 
 ### Identifiability
 
+The **partitioning** of chain components and the **topological order** on the chain components can be **uniquely identified**.
 <p align="center">
 <img width="500" alt="characterization" src="/docs/images/Identifiability.png"/>         
 </p>
@@ -77,7 +85,7 @@ $ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_n
 
 ## Algorithms
 
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)  **Algorithm 1** AMP Chain graph identification with known chain components.
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)  **Algorithm 1**Learn a DAG structure over known chain components;
    <img width="800" align ="center" alt="characterization" src="/docs/images/algo1.png" >
 - ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  **Algorithm 2**  AMP Chain graph identification from unknown chain components. 
    <img width="800" align ="center" alt="characterization" src="/docs/images/algo2.png">    

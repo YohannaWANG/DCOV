@@ -13,7 +13,7 @@ Chain graph models contain both <u>directed and undirected edges</u> and can be 
 
 ### Identifiability
 
-<img width="" alt="characterization" src="/docs/images/Identifiability.png"/>         
+<img align="center" width="500" alt="characterization" src="/docs/images/Identifiability.png"/>         
 
 ### Video explanation 
 - About chain graph models.

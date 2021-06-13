@@ -1,5 +1,5 @@
 
-#<img align="left" src="docs/images/dcov.png">
+<img align="left" src="docs/images/dcov.png"> &nbsp; &nbsp;
 
 
                                                                

@@ -85,8 +85,8 @@ $ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_n
 ## Performance
 
 Algorithm 1 (SHD)         | Algorithm 2 (SHD)
-:-------------------------:|:-------------------------:
-<img width="300" alt="characterization" src="/docs/images/NPCOV.png" >  |  <img width="300" alt="characterization" src="/docs/images/NPCPV_SHD_algo2.png" >
+:--------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:
+<img width="400" alt="characterization" src="/docs/images/NPCOV_SHD.png" >  |  <img width="400" alt="characterization" src="/docs/images/NPCPV_SHD_algo2.png" >
 
 
 

@@ -61,6 +61,22 @@ For a known chain component decomposition, we show that the DAG on the chain com
 - `utils.R` - wrapper for scipy's LBFGS-B
 - `utils.py` - graph simulation, data simulation, and accuracy evaluation 
 
+## Parameters
+
+| Parameter    | Type | Description                      | Options            |
+| -------------|------| ---------------------------------|  :----------:      |
+| `n`          |  int |  number of nodes                 |      -             |
+| `c`          |  int |  number of chain components      |      -             |
+| `a`          |  int |  average node degree             |      -             |
+| `d`          |  int |  number of samples               |      -             |
+| `plot`       |  Bool |  plot chain graph or not        |  -                 |
+| `graph`      |  str |  graph for unknow/known chain components | `known`, `unknown`  |
+| `task`       |  str |  choice which task to implement          | `known_cc`, `unknown_cc` |
+| `algorithm`  |  str |  choice which algorithm          |   `known_dcov`, `unknown_dcov` |
+| `regress_method`     |  str |  methods for regression  |   `mgcv`, `np`|
+
+
+
 
 ## Running a simple demo
 
@@ -68,7 +84,7 @@ The simplest way to try out DCOV is to run a simple example:
 ```bash
 $ git clone https://github.com/YohannaWANG/DCOV.git
 $ cd DCOV/
-$ python DCOV/demo.py
+$ python DCOV/main.py
 ```
 
 ## Runing as a command
@@ -77,7 +93,7 @@ Alternatively, if you have a CSV data file `X.csv`, you can install the package 
 ```bash
 $ pip install git+git://github.com/YohannaWANG/DCOV
 $ cd DCOV
-$ python main.py --graph chain_graph_known_cc --task eql_det --algorithm known_npcov --regress_method mgcv --n 50 --s 1000 --d 4 --operator det
+$ python main.py --graph known_cc --task eql_det --algorithm known_npcov --regress_method mgcv --n 50 --s 1000 --d 4 --operator det
 ```
 
 ## Algorithms

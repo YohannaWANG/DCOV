@@ -1,5 +1,5 @@
 "Author: 
- Date:   2021-01-28
+ Date:   2021-05-28
  Description: 
           - Utils for chain graph struture analysis;
           - And chain graph structure learning baseline algorithms.
@@ -8,7 +8,6 @@
 library(ggm)
 library(lcd)
 library(pcalg)
-#source("AMPCGs2019.R")
 
 "TODO:  
 1. Use python code generate chain graph adjacency matrix **Adj** and

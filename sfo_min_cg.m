@@ -1,5 +1,4 @@
 function Abest = sfo_min_cg(Sigma)
-%cd /home/yohanna/Documents/DCOV/dcov/sfo
 dir /home/yohanna/Documents/DCOV/dcov/sfo
 %OUR_EXPERIMENT Summary of this function goes here
 %   Detailed explanation goes here

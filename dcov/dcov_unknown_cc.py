@@ -186,15 +186,4 @@ def DCOV_unknown(simu, dag, cc):
     
     adj = _top_to_adj(simu, top_order)
     
-    return adj
-
-if __name__ == '__main__':
-    
-
-    from data_new import load_data
-    simu, G, num, cc, top_sort = load_data()
-
-    adj = DCOV_unknown(simu, G, cc)   
-    
-    
-    
+    return adj    

@@ -56,10 +56,10 @@ For a known chain component decomposition, we show that the DAG on the chain com
 ## Contents
 
 - `data.py` - generate synthetic chain graph data, including graph simulation and data simulation
-- `evaluate.py` - algorithm accuracy evaluation 
+- `evaluate.py` - algorithm accuracy evaluation.
 - `utils.py` - simulation parameters, such as selecte graph type, node number, data type, graph degree, etc.  
-- `utils.R` - wrapper for scipy's LBFGS-B
-- `utils.py` - graph simulation, data simulation, and accuracy evaluation 
+- `utils.R` - prune, regression, etc.
+- `main.py` - main algorihtm.
 
 ## Parameters
 

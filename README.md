@@ -3,8 +3,6 @@
 
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![GitHub watchers](https://img.shields.io/github/watchers/Naereen/StrapDown.js.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/Naereen/StrapDown.js/watchers/)
-
 
                                                                
 # Identifiability of AMP Chain Graph Models
@@ -45,7 +43,7 @@ For a known chain component decomposition, we show that the DAG on the chain com
   - `numpy`
   - `scipy`
   - `matplotlib`
-  - `torch`: Optional, only used for nonlinear model.
+  - `torch`: Optional.
 - **R 4.0.0**
   - `rpy2`: Python interface, enables calling R from Python. Install [rpy2](https://pypi.org/project/rpy2/) first.
   - `pcalg` : [Methods for Graphical Models and Causal Inference](https://cran.r-project.org/web/packages/pcalg/index.html)

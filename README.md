@@ -3,10 +3,8 @@
 
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![Github All Releases](https://img.shields.io/github/downloads/YohannaWANG/DCOV/total.svg)]()
-[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
+[![GitHub watchers](https://img.shields.io/github/watchers/Naereen/StrapDown.js.svg?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/Naereen/StrapDown.js/watchers/)
 
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 
                                                                
 # Identifiability of AMP Chain Graph Models
@@ -121,6 +119,7 @@ Algorithm 1 (Known chain components)         | Algorithm 2 (Unknown chain compon
 
 ## Contacts
 
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 Please feel free to contact us if you meet any problem when using this code. We are glad to hear other advise and update our work. 
 We are also open to collaboration if you think that you are working on a problem that we might be interested in it.
 Please do not hestitate to contact us!

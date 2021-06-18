@@ -9,7 +9,7 @@
 
  This is an implementation of the following paper:
  
- [Yuhao Wang](https://yohannawang.com/), [Arnab Bhattacharyya](https://www.comp.nus.edu.sg/~arnab/), [Identifiability of AMP chain graph models](https://arxiv.org/abs/2106.09350).
+ [Yuhao Wang](https://yohannawang.com/), [Arnab Bhattacharyya](https://www.comp.nus.edu.sg/~arnab/), [[Identifiability of AMP chain graph models]](https://arxiv.org/abs/2106.09350).
 
 ## Background
 Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications.

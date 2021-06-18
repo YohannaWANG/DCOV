@@ -7,8 +7,7 @@
                                                                
 # Identifiability of AMP Chain Graph Models
 
- This is an implementation of the following papers:
- 
+ This is an implementation of the following paper:
  Yuhao Wang, Arnab Bhattacharyya, [Identifiability of AMP chain graph models](https://arxiv.org/abs/2106.09350).
 
 ## Background

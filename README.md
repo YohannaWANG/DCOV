@@ -1,7 +1,7 @@
 
 <img align="left" src="docs/images/dcov.png"> &nbsp; &nbsp;
 
-[![Github All Releases](https://img.shields.io/github/downloads/YohannaWANG/YohannaWANG/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/YohannaWANG/DCOV/total.svg)]()
                                                                
 # Identifiability of AMP Chain Graph Models
 

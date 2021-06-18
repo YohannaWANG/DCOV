@@ -7,6 +7,10 @@
                                                                
 # Identifiability of AMP Chain Graph Models
 
+ This is an implementation of the following papers:
+ 
+ Yuhao Wang, Arnab Bhattacharyya, [Identifiability of AMP chain graph models](https://arxiv.org/abs/2106.09350).
+
 ## Background
 Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications.
 

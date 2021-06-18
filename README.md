@@ -2,6 +2,8 @@
 <img align="left" src="docs/images/dcov.png"> &nbsp; &nbsp;
 
 [![Github All Releases](https://img.shields.io/github/downloads/YohannaWANG/DCOV/total.svg)]()
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
                                                                
 # Identifiability of AMP Chain Graph Models
 

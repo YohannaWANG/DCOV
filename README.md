@@ -116,6 +116,12 @@ $ python main.py --graph known_cc --task eql_det --algorithm known_npcov --regre
 Algorithm 1 (Known chain components)         | Algorithm 2 (Unknown chain components)
 :--------------------------------------------------------------------:|:-----------------------------------------------------------------------------------:
 <img width="400" alt="characterization" src="/docs/images/NPCOV_SHD.png" >  |  <img width="400" alt="characterization" src="/docs/images/NPCPV_SHD_algo2.png" >
+''
+
+## Related Works
+ One paragraph in our related work section gives almost a complete history of work done on them! We summarized most of the related works below, it will also be updated accordingly. 
+ 
+ [https://github.com/YohannaWANG/Chain-Graph-Literature](https://github.com/YohannaWANG/Chain-Graph-Literature)
 
 ## Citation
 ```

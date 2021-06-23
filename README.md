@@ -9,7 +9,7 @@
 
  This is an implementation of the following paper:
  
- [Yuhao Wang](https://yohannawang.com/), [Arnab Bhattacharyya](https://www.comp.nus.edu.sg/~arnab/), [**Identifiability of AMP chain graph models**](https://arxiv.org/abs/2106.09350).
+ [Wang Yuhao](https://yohannawang.com/), and [Arnab Bhattacharyya](https://www.comp.nus.edu.sg/~arnab/). "[Identifiability of AMP chain graph models.](https://arxiv.org/abs/2106.09350)" arXiv preprint arXiv:2106.09350 (2021).
 
 ## Background
 Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications.
@@ -118,6 +118,14 @@ Algorithm 1 (Known chain components)         | Algorithm 2 (Unknown chain compon
 <img width="400" alt="characterization" src="/docs/images/NPCOV_SHD.png" >  |  <img width="400" alt="characterization" src="/docs/images/NPCPV_SHD_algo2.png" >
 
 ## Citation
+```
+@article{wang2021identifiability,
+  title={Identifiability of AMP chain graph models},
+  author={Wang, Yuhao and Bhattacharyya, Arnab},
+  journal={arXiv preprint arXiv:2106.09350},
+  year={2021}
+}
+```
 
 ## Contacts
 

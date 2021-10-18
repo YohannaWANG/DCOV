@@ -11,6 +11,10 @@
  
  [Wang Yuhao](https://yohannawang.com/), and [Arnab Bhattacharyya](https://www.comp.nus.edu.sg/~arnab/). "[Identifiability of AMP chain graph models.](https://arxiv.org/abs/2106.09350)" arXiv preprint arXiv:2106.09350 (2021).
 
+## Updates:
+Add a Python-version SFO, now you can choose either use Matlab or Python version SFO for learning unknwon chain components.
+
+
 ## Background
 Chain graph models contain both <u>directed and undirected edges</u> and can be used to represent both **association** and **causation** in real-world applications.
 

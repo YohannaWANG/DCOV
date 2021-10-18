@@ -39,7 +39,7 @@ import matlab
 import matlab.engine
 eng = matlab.engine.start_matlab()
 
-
+from sfo_python import Our_Experiment
 def DCOV_unknown(simu, dag, cc):
     '''
     This is the implementation of algorithm 2
@@ -122,9 +122,15 @@ def DCOV_unknown(simu, dag, cc):
 
     ''''Find the first root chain components by minimizing the SFO function'''
     Sigma = np.cov(simu.T)
-    Sigma = matlab.double(Sigma.tolist())
-    cc = np.array(eng.sfo_min_cg(Sigma))
-
+    
+    if args.sfo == 'sfo-python':
+        cc = Our_Experiment.our_experiment(Sigma)
+        cc = np.expand_dims(cc, axis=0)
+        
+    elif args.sfo == 'sfo-matlab':
+        Sigma = matlab.double(Sigma.tolist())
+        cc = np.array(eng.sfo_min_cg(Sigma))
+    
     '''Re-arrange the data format: Matleb index starts from 1 while python starts from 0'''
     cc_new = []
     for i in cc: cc_new.append(i-1)
@@ -164,7 +170,13 @@ def DCOV_unknown(simu, dag, cc):
         Note: This will retur new node index from Matlab;
               need to rearrange the index for the descendant nodes
         '''
-        cc_temp = np.array(eng.sfo_min_cg(Sigma))
+        if args.sfo == 'sfo-matlab':
+            cc_temp = np.array(eng.sfo_min_cg(Sigma))
+        
+        elif args.sfo == 'sfo-python':
+            cc_temp = Our_Experiment.our_experiment(Sigma)
+            cc_temp = np.expand_dims(cc_temp, axis=0)
+            
         cc_index = []
         for i in cc_temp: cc_index.append(i-1)
         cc_index = np.squeeze(cc_index, axis = 0)
@@ -184,6 +196,7 @@ def DCOV_unknown(simu, dag, cc):
     for i in list(top_order.values()):
         top_sort.append(i)
     
+    print('top_sort', top_sort)
     adj = _top_to_adj(simu, top_order)
     
     return adj    

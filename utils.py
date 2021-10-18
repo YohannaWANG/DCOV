@@ -17,7 +17,6 @@ parser.add_argument('--task', type=str, default="unknown_cc", choices=['known_cc
 parser.add_argument('--algorithm', type=str, default="unknown_dcov", choices=['known_dcov','unknown_dcov'], 
                     help="known_dcov: algorithm for known cc with equal determinant;\
                           unknown_dcov: unknown cc with specialized cov")
-
 """
 Notes: Graph: chain_graph_known_cc; Task: eql_det;
        Graph: chain_graph_un_cc;    Task: unknown_cc
@@ -25,12 +24,14 @@ Notes: Graph: chain_graph_known_cc; Task: eql_det;
 parser.add_argument('--regress_method', type=str, default="mgcv",
                     choices=['np', 'mgcv'], 
                     help="regression method (calculate regression residual OR prune)")
+parser.add_argument('--sfo', type=str, default='sfo-python', choices = ['sfo-matlab', 'sfo-python'],
+                    help="Use either Matlab or Python implementation of SUbmodular function minimization")
 parser.add_argument('--plot', action='store_true', default=True,
                     help='plot graph')
 
 parser.add_argument('--det', type=int, default=1,
                     help='equal determinant for chain components')
-parser.add_argument('--n', type=int, default=10, help='number of nodes')
+parser.add_argument('--n', type=int, default=20, help='number of nodes')
 parser.add_argument('--c', type=int, default=2, help='number of chain components')
 parser.add_argument('--a', type=int, default=2, help='average node degree')
 parser.add_argument('--d', type=int, default=1000, help="number of dimensions")
